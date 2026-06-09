@@ -12,12 +12,16 @@
 }
 *{box-sizing:border-box} html{scroll-behavior:smooth} body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;background:radial-gradient(circle at top,#16253a 0,#071018 38%,#050912 100%);color:var(--text);line-height:1.45;}
 .wrap{max-width:980px;margin:0 auto;padding:18px 14px 90px} header{padding:14px 0 12px} h1{font-size:clamp(1.6rem,6vw,2.4rem);line-height:1.05;margin:0 0 8px} .subtitle{color:var(--muted);margin:0;font-size:.98rem}.status{margin-top:10px;color:var(--good);font-weight:800;font-size:.9rem}
-.controls{position:sticky;top:0;z-index:10;background:rgba(7,16,24,.96);backdrop-filter:blur(12px);border:1px solid var(--line);border-radius:var(--radius);padding:12px;box-shadow:var(--shadow);margin:12px 0 14px}.search-grid{display:grid;gap:12px}@media(min-width:760px){.search-grid{grid-template-columns:1fr 1fr}}
+.controls{position:sticky;top:0;z-index:10;background:rgba(7,16,24,.96);backdrop-filter:blur(12px);border:1px solid var(--line);border-radius:var(--radius);padding:0;box-shadow:var(--shadow);margin:12px 0 14px;overflow:visible}.controls-head{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:12px;border-bottom:1px solid var(--line);cursor:pointer}.controls-head-title{display:flex;flex-direction:column;gap:2px}.controls-head h2{font-size:1rem;margin:0;color:var(--accent)}.controls-head p{font-size:.78rem;color:var(--muted);margin:0}.toggle-search{appearance:none;border:1px solid var(--line);background:#14243a;color:var(--text);border-radius:12px;min-width:46px;min-height:42px;font-size:1.15rem;font-weight:900;display:flex;align-items:center;justify-content:center;cursor:pointer}.toggle-search .arrow{display:inline-block;transition:transform .18s ease}.controls.collapsed .toggle-search .arrow{transform:rotate(-90deg)}.controls-body{padding:12px}.controls.collapsed .controls-body{display:none}.search-grid{display:grid;gap:12px}@media(min-width:760px){.search-grid{grid-template-columns:1fr 1fr}}
 .search-box{background:linear-gradient(180deg,rgba(20,36,58,.95),rgba(15,27,43,.95));border:1px solid var(--line);border-radius:16px;padding:12px}.search-box h2{font-size:1rem;margin:0 0 4px;color:var(--accent)}.help{color:var(--muted);font-size:.82rem;margin:0 0 10px}label{display:block;color:var(--muted);font-size:.78rem;font-weight:800;margin:10px 0 5px;text-transform:uppercase;letter-spacing:.05em}
 input,select,button{font:inherit}input[type=search],select{width:100%;min-height:48px;border:1px solid var(--line);border-radius:14px;background:var(--field);color:var(--text);padding:12px 13px;outline:none}input[type=search]:focus,select:focus{border-color:var(--accent);box-shadow:0 0 0 3px rgba(104,210,255,.18)}
 .btn-row{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}.btn{min-height:46px;border:0;border-radius:14px;padding:10px 13px;font-weight:900;background:linear-gradient(135deg,var(--accent),var(--accent2));color:#06111d;cursor:pointer}.btn.secondary{background:#18263b;color:var(--text);border:1px solid var(--line)}.btn.warn{background:#2a1f12;color:var(--warn);border:1px solid #5a4720}.btn:active{transform:translateY(1px)}
 .filter-row{display:flex;gap:8px;overflow-x:auto;padding:10px 2px 2px}.chip{flex:0 0 auto;border:1px solid var(--line);border-radius:999px;background:#0c1728;color:var(--muted);padding:9px 12px;font-weight:850;cursor:pointer}.chip.active{background:linear-gradient(135deg,var(--accent),var(--accent2));color:#06111d;border-color:transparent}.meta{display:flex;justify-content:space-between;align-items:center;gap:12px;color:var(--muted);font-size:.88rem;margin-top:10px}.meta strong{color:var(--text)}
 #message{display:none;border:1px solid #5a4720;background:#20180c;color:#ffe6a3;border-radius:14px;padding:12px;margin:12px 0;font-weight:700}.results{display:grid;gap:12px}.card{background:linear-gradient(180deg,rgba(20,36,58,.96),rgba(12,23,40,.98));border:1px solid rgba(104,210,255,.2);border-radius:var(--radius);padding:14px;box-shadow:var(--shadow)}.badge{display:inline-block;background:#08263a;color:var(--accent);border:1px solid rgba(104,210,255,.25);border-radius:999px;font-size:.74rem;font-weight:900;padding:5px 9px}.card h3{font-size:1.25rem;margin:10px 0 12px}.section{margin-top:11px}.label{display:block;color:var(--accent);font-size:.75rem;font-weight:900;letter-spacing:.08em;text-transform:uppercase;margin-bottom:3px}.section p{margin:0}.examples p{color:#ffe9a6}.location p{color:var(--good);font-weight:800}.hl{background:rgba(255,226,138,.28);color:#fff4bf;border-radius:4px;padding:0 2px}.empty{text-align:center;border:1px dashed var(--line);border-radius:var(--radius);padding:24px;color:var(--muted);background:rgba(12,23,40,.75)}footer{color:var(--muted);font-size:.82rem;margin-top:24px}noscript{display:block;background:#3a1212;color:#ffd0d0;padding:12px;border-radius:12px;margin:10px 0}.debug{font-size:.78rem;color:#8ea0bb;margin-top:8px}
+
+.search-box{position:relative}.suggestions{display:none;position:absolute;left:12px;right:12px;top:154px;z-index:30;background:#081321;border:1px solid var(--accent);border-radius:14px;box-shadow:0 18px 40px rgba(0,0,0,.45);max-height:230px;overflow:auto}.suggestions.open{display:block}.suggestion-item{width:100%;text-align:left;border:0;border-bottom:1px solid rgba(104,210,255,.16);background:transparent;color:var(--text);padding:12px 13px;cursor:pointer}.suggestion-item:last-child{border-bottom:0}.suggestion-item small{display:block;color:var(--muted);margin-top:2px}.suggestion-item:active,.suggestion-item:hover{background:#14243a}.card{scroll-margin-top:84px}
+@media(max-width:700px){.wrap{padding:12px 10px 80px}header{padding-bottom:6px}.controls{position:sticky;top:0;border-radius:16px}.controls-head{padding:10px 11px}.controls-head h2{font-size:.98rem}.controls-head p{font-size:.75rem}.controls-body{padding:10px;max-height:calc(100vh - 82px);overflow:auto}.controls:not(.collapsed){position:relative}.controls.collapsed{position:sticky;top:0}.search-box{padding:10px}.search-box h2{font-size:.95rem}.help{font-size:.78rem}input[type=search],select{min-height:44px}.btn{min-height:42px}.suggestions{top:144px;left:10px;right:10px;max-height:190px}.card{scroll-margin-top:72px}.meta{align-items:flex-start;flex-direction:column;gap:4px}}
+
 </style>
 </head>
 <body>
@@ -28,7 +32,15 @@ input,select,button{font:inherit}input[type=search],select{width:100%;min-height
   <p class="status" id="loadStatus">Loading terms…</p>
   <noscript>JavaScript is disabled. This lookup needs JavaScript turned on to show the searchable table.</noscript>
 </header>
-<section class="controls" aria-label="Lookup controls">
+<section class="controls" id="searchControls" aria-label="Lookup controls">
+  <div class="controls-head" id="controlsHead" role="button" tabindex="0" aria-controls="controlsBody" aria-expanded="true">
+    <div class="controls-head-title">
+      <h2>Search Controls</h2>
+      <p id="controlsHint">Open — choose a term, search definitions, or filter by chapter.</p>
+    </div>
+    <button class="toggle-search" id="toggleSearchBtn" type="button" aria-label="Hide search controls"><span class="arrow">▾</span></button>
+  </div>
+  <div class="controls-body" id="controlsBody">
   <div class="search-grid">
     <div class="search-box">
       <h2>1. Search by term</h2>
@@ -36,6 +48,7 @@ input,select,button{font:inherit}input[type=search],select{width:100%;min-height
       <label for="termSearch">Term search with suggestions</label>
       <input id="termSearch" list="termList" type="search" placeholder="Example: Emotional contagion" autocomplete="off">
       <datalist id="termList"></datalist>
+      <div id="termSuggestions" class="suggestions" role="listbox" aria-label="Term suggestions"></div>
       <label for="termSelect">Or pick a term</label>
       <select id="termSelect"><option value="">Choose a term…</option></select>
       <div class="btn-row">
@@ -60,6 +73,7 @@ input,select,button{font:inherit}input[type=search],select{width:100%;min-height
   </div>
   <div class="meta"><span id="count"><strong>0</strong> terms shown</span><span>Source: Chapters 8-13</span></div>
   <div class="debug" id="debugLine"></div>
+  </div>
 </section>
 <div id="message"></div>
 <main id="results" class="results"></main>
@@ -85,6 +99,44 @@ var DATA = [{"chapter": "8", "chapterTitle": "Listening: Receiving and Respondin
 var CHAPTERS = [{"chapter": "8", "title": "Listening: Receiving and Responding", "heading": "Chapter 8: Listening: Receiving and Responding"}, {"chapter": "9", "title": "Emotions", "heading": "Chapter 9: Emotions"}, {"chapter": "10", "title": "Dynamics of Interpersonal Relationships", "heading": "Chapter 10: Dynamics of Interpersonal Relationships"}, {"chapter": "11", "title": "Communication in Close Relationships: Friends, Family, and Romantic Partners", "heading": "Chapter 11: Communication in Close Relationships: Friends, Family, and Romantic Partners"}, {"chapter": "12", "title": "Managing Conflict", "heading": "Chapter 12: Managing Conflict"}, {"chapter": "13", "title": "Communication Climate", "heading": "Chapter 13: Communication Climate"}];
 var activeChapter = 'all';
 var lastMode = 'all';
+
+var controlsCollapsed = false;
+function isPhone(){return window.matchMedia && window.matchMedia('(max-width: 700px)').matches;}
+function setControlsCollapsed(collapsed){
+  controlsCollapsed = !!collapsed;
+  var panel = $('searchControls');
+  var head = $('controlsHead');
+  var hint = $('controlsHint');
+  var btn = $('toggleSearchBtn');
+  if(!panel || !head || !btn) return;
+  panel.classList.toggle('collapsed', controlsCollapsed);
+  head.setAttribute('aria-expanded', controlsCollapsed ? 'false' : 'true');
+  btn.setAttribute('aria-label', controlsCollapsed ? 'Show search controls' : 'Hide search controls');
+  if(hint) hint.textContent = controlsCollapsed ? 'Closed — tap here to show search options.' : 'Open — choose a term, search definitions, or filter by chapter.';
+}
+function toggleControls(){setControlsCollapsed(!controlsCollapsed);}
+function collapseAfterLookup(){
+  if(isPhone()){
+    setControlsCollapsed(true);
+    setTimeout(function(){
+      var first = document.querySelector('#results .card, #results .empty');
+      if(first) first.scrollIntoView({behavior:'smooth', block:'start'});
+    }, 80);
+  }
+}
+function openControls(){setControlsCollapsed(false);}
+function updateSuggestions(){
+  var box = $('termSuggestions');
+  var input = $('termSearch');
+  if(!box || !input) return;
+  var q = normalize(input.value);
+  if(!q){box.classList.remove('open'); box.innerHTML=''; return;}
+  var matches = DATA.filter(function(r){return normalize(r.term).indexOf(q) >= 0;}).slice(0,12);
+  if(!matches.length){box.classList.remove('open'); box.innerHTML=''; return;}
+  box.innerHTML = matches.map(function(r){return '<button type="button" class="suggestion-item" data-term="' + escapeHtml(r.term) + '"><strong>' + highlight(r.term, input.value) + '</strong><small>Chapter ' + escapeHtml(r.chapter) + ': ' + escapeHtml(r.chapterTitle) + '</small></button>';}).join('');
+  box.classList.add('open');
+}
+function hideSuggestions(){var box=$('termSuggestions'); if(box){box.classList.remove('open');}}
 function boot(){
   populateTermControls();
   renderChips();
@@ -161,14 +213,26 @@ function render(list, query){
   }).join('');
 }
 function attachEvents(){
-  $('termBtn').addEventListener('click', searchTerm);
-  $('definitionBtn').addEventListener('click', searchDefinition);
-  $('showAllBtn').addEventListener('click', showAll);
-  $('clearTermBtn').addEventListener('click', function(){$('termSearch').value=''; $('termSelect').value=''; searchTerm();});
+  $('toggleSearchBtn').addEventListener('click', function(e){e.stopPropagation(); toggleControls();});
+  $('controlsHead').addEventListener('click', function(e){ if(e.target.closest('#toggleSearchBtn')) return; toggleControls(); });
+  $('controlsHead').addEventListener('keydown', function(e){ if(e.key === 'Enter' || e.key === ' '){ e.preventDefault(); toggleControls(); } });
+  $('termBtn').addEventListener('click', function(){searchTerm(); hideSuggestions(); collapseAfterLookup();});
+  $('definitionBtn').addEventListener('click', function(){searchDefinition(); hideSuggestions(); collapseAfterLookup();});
+  $('showAllBtn').addEventListener('click', function(){showAll(); openControls();});
+  $('clearTermBtn').addEventListener('click', function(){$('termSearch').value=''; $('termSelect').value=''; hideSuggestions(); searchTerm();});
   $('clearDefinitionBtn').addEventListener('click', function(){$('definitionSearch').value=''; searchDefinition();});
-  $('termSearch').addEventListener('keydown', function(e){if(e.key==='Enter') searchTerm();});
-  $('definitionSearch').addEventListener('keydown', function(e){if(e.key==='Enter') searchDefinition();});
-  $('termSelect').addEventListener('change', function(){$('termSearch').value=this.value; searchTerm(); window.scrollTo({top:0,behavior:'smooth'});});
+  $('termSearch').addEventListener('input', updateSuggestions);
+  $('termSearch').addEventListener('focus', updateSuggestions);
+  $('termSearch').addEventListener('keydown', function(e){if(e.key==='Enter'){e.preventDefault(); searchTerm(); hideSuggestions(); collapseAfterLookup();} if(e.key==='Escape') hideSuggestions();});
+  $('definitionSearch').addEventListener('keydown', function(e){if(e.key==='Enter'){e.preventDefault(); searchDefinition(); collapseAfterLookup();}});
+  $('termSelect').addEventListener('change', function(){if(!this.value) return; $('termSearch').value=this.value; searchTerm(); hideSuggestions(); collapseAfterLookup();});
+  $('termSuggestions').addEventListener('click', function(e){
+    var btn=e.target.closest('button[data-term]'); if(!btn) return;
+    var term=btn.getAttribute('data-term');
+    $('termSearch').value=term; $('termSelect').value=term;
+    searchTerm(); hideSuggestions(); collapseAfterLookup();
+  });
+  document.addEventListener('click', function(e){ if(!e.target.closest('.search-box')) hideSuggestions(); });
   $('chapterChips').addEventListener('click', function(e){
     var btn=e.target.closest('button[data-chapter]'); if(!btn) return;
     activeChapter = btn.getAttribute('data-chapter'); rerunCurrent();
